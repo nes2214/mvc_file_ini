@@ -1,3 +1,12 @@
+<?php
+$categoryDAO = CategoryFileDAO::getInstance();
+$categories = $categoryDAO->listAll();
+
+$catNames = [];
+foreach ($categories as $category) {
+    $catNames[$category->getId()] = $category->getName();
+}
+?>
 <div id="content">
     <fieldset>
         <legend>Product list</legend>    
@@ -14,13 +23,14 @@
                         </tr>
 EOT;
                 foreach ($content as $product) {
+                    $catName = isset($catNames[$product->getCategory()]) ? $catNames[$product->getCategory()] : 'Unknown';
                     echo <<<EOT
                         <tr>
                             <td>{$product->getId()}</td>
                             <td>{$product->getName()}</td>
                             <td>{$product->getPrice()}</td>
                             <td>{$product->getDescription()}</td>
-                            <td>{$product->getCategory()}</td>
+                            <td>{$catName}</td>
                         </tr>
 EOT;
                 }

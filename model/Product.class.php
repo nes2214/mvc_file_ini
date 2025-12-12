@@ -31,6 +31,6 @@ class Product {
     public function setCategory($category) { $this->category=$category; }
 
     public function __toString() {
-        return sprintf("%s;%s\n", $this->id, $this->name, $this->price, $this->description, $this->category);
+        return "{$this->id};{$this->name};{$this->price};{$this->description};{$this->category}" . PHP_EOL;
     }
 }

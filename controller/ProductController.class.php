@@ -39,6 +39,9 @@ class ProductController implements ControllerInterface {
             case "delete":
                 $this->delete();
                 break;
+            case "form_smoddelP":
+                $this->FormSModDel();
+                break;
             case "list_all":
                 $this->listAll();
                 break;
@@ -79,7 +82,7 @@ class ProductController implements ControllerInterface {
 }
 
     public function modify() {
-        // Lógica para modificar producto
+        
     }
 
     public function delete() {
@@ -95,19 +98,35 @@ class ProductController implements ControllerInterface {
     } else {
         $_SESSION['error'][] = ProductMessage::ERR_FORM['not_found'];
     }
-
+    
     // Mostrar la vista con los productos
     $this->view->display("view/form/ProductList.php", $products);
     }
 
     public function searchById() {
-        // Lógica para buscar producto por ID
-    }
+        $productValid=ProductFormValidation::checkData(ProductFormValidation::SEARCH_FIELDS);
+        
+        if (empty($_SESSION['error'])) {
+            $product=$this->model->searchById($productValid->getId());
+
+            if (!is_null($product)) { // is NULL or Category object?
+                $_SESSION['info']=ProductMessage::INF_FORM['found'];
+                $productValid=$product;
+            }
+            else {
+                $_SESSION['error']=ProductMessage::ERR_FORM['not_found'];
+            }
+        }
+            
+        $this->view->display("view/form/ProductFormSModDel.php", $productValid);
+    }  
 
     // Métodos adicionales
     public function formAdd() {
         $this->view->display("view/form/ProductFormAdd.php");
     }
+    public function FormSModDel() {
+        $this->view->display("view/form/ProductFormSModDel.php");
+    }
 
 }
-
