@@ -5,7 +5,9 @@ require_once "util/ProductMessage.class.php";
 class ProductFormValidation {
 
     const ADD_FIELDS = array('id','name','price','description','category');
-
+    const MODIFY_FIELDS = array('id','name','price','description','category');
+    const DELETE_FIELDS = array('id');
+    const SEARCH_FIELDS = array('id');
     const NUMERIC = "/^[0-9]+$/";
     const ALPHANUMERIC = "/^[a-zA-Z0-9\s]+$/";
 

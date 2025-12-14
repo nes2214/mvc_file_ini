@@ -1,2 +1,1 @@
-1;aaaa;2;aa;2
-2;sss;2;ss;4
+1;Gorra;15.95;Gorra chula;2

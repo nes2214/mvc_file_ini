@@ -75,18 +75,51 @@ class ProductController implements ControllerInterface {
         }
     }
 
-    // <--- aquí estaba el error
+   
     $categories = CategoryFileDAO::getInstance()->listAll();
 
     $this->view->display("view/form/ProductFormAdd.php", $productValid, $categories);
 }
 
     public function modify() {
-        
+        $productValid = ProductFormValidation::checkData(ProductFormValidation::MODIFY_FIELDS);
+        if (empty($_SESSION['error'])) {
+            $product = $this->model->searchById($productValid->getId());
+
+            if (!is_null($product)) {
+                $result = $this->model->modify($productValid);
+
+                if ($result === TRUE) {
+                    $_SESSION['info'][] = ProductMessage::INF_FORM['update'];
+                } else {
+                    $_SESSION['error'][] = ProductMessage::ERR_DAO['update'];
+                }
+            } else {
+                $_SESSION['error'][] = ProductMessage::ERR_FORM['not_found'];
+            }
+        }
+        $this->view->display("view/form/ProductFormSModDel.php", $productValid);
     }
 
     public function delete() {
-        // Lógica para eliminar producto
+        $productValid = ProductFormValidation::checkData(ProductFormValidation::DELETE_FIELDS);
+        if (empty($_SESSION['error'])) {
+            $product = $this->model->searchById($productValid->getId());
+
+            if (!is_null($product)) {
+                $result = $this->model->delete($productValid->getId());
+
+                if ($result === TRUE) {
+                    $_SESSION['info'][] = ProductMessage::INF_FORM['delete'];
+                    
+                } else {
+                    $_SESSION['error'][] = ProductMessage::ERR_DAO['delete'];
+                }
+            } else {
+                $_SESSION['error'][] = ProductMessage::ERR_FORM['not_found'];
+            }
+        }
+        $this->view->display("view/form/ProductFormSModDel.php", $productValid);
     }
 
     public function listAll() {
