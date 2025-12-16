@@ -1,7 +1,7 @@
 <?php
-require_once "model/persist/ProductFileDAO.class.php";
+//require_once "model/persist/ProductFileDAO.class.php";
 
-//require_once "model/persist/ProductDbDAO.class.php";
+require_once "model/persist/ProductDbDAO.class.php";
 
 class ProductModel {
 
@@ -9,10 +9,10 @@ class ProductModel {
 
     public function __construct() {
         // File
-        $this->dataProduct=ProductFileDAO::getInstance();
+        //$this->dataProduct=ProductFileDAO::getInstance();
         
         // Database
-        //$this->dataProduct=ProductDbDAO::getInstance();
+        $this->dataProduct=ProductDbDAO::getInstance();
     }
 
     /**

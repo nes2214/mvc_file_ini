@@ -1,7 +1,6 @@
 <?php
-require_once "model/persist/CategoryFileDAO.class.php";
-
-//require_once "model/persist/CategoryDbDAO.class.php";
+//require_once "model/persist/CategoryFileDAO.class.php";
+    require_once "model/persist/CategoryDbDAO.class.php";
 
 class CategoryModel {
 
@@ -9,10 +8,10 @@ class CategoryModel {
 
     public function __construct() {
         // File
-        $this->dataCategory=CategoryFileDAO::getInstance();
+        //$this->dataCategory=CategoryFileDAO::getInstance();
         
         // Database
-        //$this->dataCategory=CategoryDbDAO::getInstance();
+        $this->dataCategory=CategoryDbDAO::getInstance();
     }
 
     /**

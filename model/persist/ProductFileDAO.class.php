@@ -156,7 +156,7 @@ public function delete($id): bool {
         $product=NULL;
 
         // abre el fichero en modo read
-        if ($this->connect->openFile("r")) {
+    if ($this->connect->openFile("r")) {
             while(!feof($this->connect->getHandle())) {
                 $line=trim(fgets($this->connect->getHandle()));
                 if ($line!="") {

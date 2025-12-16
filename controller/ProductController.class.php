@@ -76,7 +76,7 @@ class ProductController implements ControllerInterface {
     }
 
    
-    $categories = CategoryFileDAO::getInstance()->listAll();
+    $categories = CategoryDbDAO::getInstance()->listAll();
 
     $this->view->display("view/form/ProductFormAdd.php", $productValid, $categories);
 }

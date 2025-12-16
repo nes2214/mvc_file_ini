@@ -1,8 +1,8 @@
 <?php
-require_once "model/persist/CategoryFileDAO.class.php";
+require_once "model/persist/CategoryDbDAO.class.php";
 
 // Cargar todas las categorías
-$categoryDAO = CategoryFileDAO::getInstance();
+$categoryDAO = CategoryDbDAO::getInstance();
 $categories = $categoryDAO->listAll();
 ?>
 
@@ -12,11 +12,11 @@ $categories = $categoryDAO->listAll();
             <legend>Add Product</legend>
 
             <label>Id *:</label>
-            <input type="text" placeholder="Id" name="id" 
+            <input type="text" placeholder="Id" name="id"
                 value="<?php if (isset($content)) { echo $content->getId(); } ?>" />
 
             <label>Name *:</label>
-            <input type="text" placeholder="Name" name="name" 
+            <input type="text" placeholder="Name" name="name"
                 value="<?php if (isset($content)) { echo $content->getName(); } ?>" />
 
             <label>Price *:</label>
@@ -32,12 +32,10 @@ $categories = $categoryDAO->listAll();
                 <option value="">Select category</option>
 
                 <?php foreach ($categories as $cat): ?>
-                    <option 
-                        value="<?= $cat->getId() ?>" 
-                        <?php if (isset($content) && $content->getCategory() == $cat->getId()) echo "selected"; ?>
-                    >
-                        <?= htmlspecialchars($cat->getName()) ?>
-                    </option>
+                <option value="<?= $cat->getId() ?>"
+                    <?php if (isset($content) && $content->getCategory() == $cat->getId()) echo "selected"; ?>>
+                    <?= htmlspecialchars($cat->getName()) ?>
+                </option>
                 <?php endforeach; ?>
             </select>
 

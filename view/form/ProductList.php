@@ -1,5 +1,5 @@
 <?php
-$categoryDAO = CategoryFileDAO::getInstance();
+$categoryDAO = CategoryDbDAO::getInstance();
 $categories = $categoryDAO->listAll();
 
 $catNames = [];
@@ -9,7 +9,7 @@ foreach ($categories as $category) {
 ?>
 <div id="content">
     <fieldset>
-        <legend>Product list</legend>    
+        <legend>Product list</legend>
         <?php
             if (isset($content)) {
                 echo <<<EOT
