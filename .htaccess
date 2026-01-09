@@ -1,0 +1,12 @@
+RewriteEngine On
+ 
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^([a-zA-Z]+)/list$ index.php?menu=$1&option=list_all
+RewriteRule ^([a-zA-Z]+)/add$ index.php?menu=$1&option=form_add
+RewriteRule ^([a-zA-Z]+)/modify$ index.php?menu=$1&option=form_modify
+RewriteRule ^([a-zA-Z]+)/delete$ index.php?menu=$1&option=form_modify

@@ -70,7 +70,7 @@ class CategoryController implements ControllerInterface {
 
     public function FormSModDel() {
         $this->view->display("view/form/CategoryFormSModDel.php");
-    }
+    }   
 
     // ejecuta la acción de insertar categoría
     public function add() {

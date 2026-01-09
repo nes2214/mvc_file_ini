@@ -13,26 +13,35 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Institut Provençana</title>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" href="<?=PATH_CSS?>header.css">
-        <link rel="stylesheet" href="<?=PATH_CSS?>body.css">
-        <script src="<?=PATH_JS?>general-fn.js"></script>
-    </head>
-    <body>
-        <div id="page">
-            <header>
-                <a href="http://www.ies-provensana.com"><img src="<?=PATH_IMG?>proven.jpg" alt="proven.jpg"></a>
-                <h1>Institut Provençana</h1>
-            </header>
-            <?php
+
+<head>
+    <title>Institut Provençana</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="<?=PATH_CSS?>header.css">
+    <link rel="stylesheet" href="<?=PATH_CSS?>body.css">
+    <script src="<?=PATH_JS?>general-fn.js"></script>
+</head>
+
+<body>
+    <div id="page">
+        <header>
+            <a href="http://www.ies-provensana.com"><img src="<?=PATH_IMG?>proven.jpg" alt="proven.jpg"></a>
+            <h1>Institut Provençana</h1>
+        </header>
+        <?php
                 //$controlMain=new MainController();
                 //$controlMain->processRequest();
 
-                (new MainController())->processRequest();
+                if (isset($_SESSION['username'])) {
+                    (new MainController())->processRequest();
+                }
+                else {
+                    $controlLogin=new UserController();
+                    $controlLogin->processRequest();
+                }
             ?>
-        </div>
-    </body>
+    </div>
+</body>
+
 </html>
