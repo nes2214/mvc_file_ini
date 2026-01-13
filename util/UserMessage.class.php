@@ -15,7 +15,7 @@ class UserMessage {
         array(
             'empty_username' => 'Username must be filled',
             'empty_password' => 'Password must be filled',
-            'exists_id'      => 'Username already exists',
+            'exists_user'      => 'Username already exists',
             'not_exists_id'  => 'Username not exists',
             'not_found'      => 'No data found',
             '' => ''
