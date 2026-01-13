@@ -11,8 +11,13 @@
             <label for="age">Age *:</label>
             <input type="text" placeholder="Age" name="age" />
             <label for="role">Role *:</label>
-            <input type="text" placeholder="Role" name="role"
-                value="<?php if (isset($content)) { echo $content->getRole(); } ?>" />
+            <select name="role">
+                <option value="basic" <?php if (isset($content) && $content->getRole() === 'basic') echo 'selected'; ?>>
+                    Basic</option>
+                <option value="advanced"
+                    <?php if (isset($content) && $content->getRole() === 'advanced') echo 'selected'; ?>>Advanced
+                </option>
+            </select>
             <label for="active">Active *:
                 <input type="checkbox" name="active" value="1" /></label>
             <label>* Required fields</label>

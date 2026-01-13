@@ -18,7 +18,7 @@ EOT;
                             <td>{$user->getUsername()}</td>
                             <td>{$user->getAge()}</td>
                             <td>{$user->getRole()}</td>
-                            <td>{$user->getActive()}</td>
+                            <td>{$user->isActive()}</td>
                         </tr>
 EOT;
                 }

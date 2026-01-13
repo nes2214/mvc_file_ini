@@ -1,2 +1,4 @@
 adminf;adminf;43;advanced;1
 read;read;34;basic;0
+nestor;nestor;19;basic;1
+joan;joan;19;basic;1

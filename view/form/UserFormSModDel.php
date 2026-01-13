@@ -5,16 +5,29 @@
             <label>Username *:</label>
             <input type="text" placeholder="Username" name="username"
                 value="<?php if (isset($content)) { echo $content->getUsername(); } ?>" />
+
             <label>Password *:</label>
             <input type="password" placeholder="Password" name="password"
                 value="<?php if (isset($content)) { echo $content->getPassword(); } ?>" />
+
             <label for="age">Age *:</label>
-            <input type="text" placeholder="Age" name="age" />
+            <input type="text" placeholder="Age" name="age"
+                value="<?php if (isset($content)) { echo $content->getAge(); } ?>" />
+
             <label for="role">Role *:</label>
-            <input type="text" placeholder="Role" name="role"
-                value="<?php if (isset($content)) { echo $content->getRole(); } ?>" />
+            <select name="role">
+                <option value="basic" <?php if (isset($content) && $content->getRole() === 'basic') echo 'selected'; ?>>
+                    Basic</option>
+                <option value="advanced"
+                    <?php if (isset($content) && $content->getRole() === 'advanced') echo 'selected'; ?>>Advanced
+                </option>
+            </select>
+
             <label for="active">Active *:
-                <input type="checkbox" name="active" value="1" /></label>
+                <input type="checkbox" name="active" value="1"
+                    <?php if (isset($content) && $content->isActive()) echo 'checked'; ?> />
+            </label>
+
             <label>* Required fields</label>
             <input type="submit" name="action" value="search" />
             <input type="submit" name="action" value="modify" />

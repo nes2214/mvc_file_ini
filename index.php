@@ -1,4 +1,5 @@
 <?php
+    require_once "model/User.class.php";
     session_start();
 
     $host = $_SERVER['HTTP_HOST']; // localhost
